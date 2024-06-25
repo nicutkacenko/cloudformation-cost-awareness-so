@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  jupyterlab:
+    image: so-cloudformation-notebook:latest
+    build: .
+    stdin_open: true
+    tty: true
+    ports:
+     - "8888:8888"
+    volumes:
+      - ..:/workspace
