@@ -29,7 +29,7 @@ We used the data dump from [2024-04-02](https://archive.org/details/stack-exchan
 
 Place the files in the `step-1-data/` directory and **do NOT decompress them**.
 
-### Extract the questions about Terraform
+### Extract the questions about CloudFormation
 
 1. Navigate to the `step-1-scripts/` directory
 2. Create the conda environment
@@ -38,7 +38,7 @@ Place the files in the `step-1-data/` directory and **do NOT decompress them**.
     ```
 3. Activate the conda environment
     ```bash
-    conda activate so-terraform
+    conda activate so-cloudformation
     ```
 4. Run the script below, uncommenting step-by-step
     ```bash
@@ -53,7 +53,7 @@ Place the files in the `step-1-data/` directory and **do NOT decompress them**.
     7. Add answers to the questions and cleanup
 5. Delete the conda environment
     ```bash
-    conda deactivate && conda env remove -n so-terraform
+    conda deactivate && conda env remove -n so-cloudformation
     ```
 
 ## Step 2 - Data Analysis
@@ -69,7 +69,7 @@ Place the files in the `step-1-data/` directory and **do NOT decompress them**.
             ```
         2. Activate the conda environment
             ```bash
-            conda activate so-terraform-notebook
+            conda activate so-cloudformation-notebook
             ```
         3. Start the server
             ```bash
@@ -82,7 +82,7 @@ Place the files in the `step-1-data/` directory and **do NOT decompress them**.
 3. Open the JupyterLab server in your browser
     - [http://localhost:8888/lab](http://localhost:8888/lab)
 4. Follow the instructions in the notebook `step-2-scripts/Cloudformation.ipynb`
-5. Stop the JupyterLab server and clean up
+5. Clean up the JupyterLab server:
     1. Stop the server (and container)
         ```bash
         CTRL+C
@@ -90,16 +90,31 @@ Place the files in the `step-1-data/` directory and **do NOT decompress them**.
     2. Clean up
         - Using conda
             ```bash
-            conda deactivate && conda env remove -n so-terraform-notebook
+            conda deactivate && conda env remove -n so-cloudformation-notebook
             ```
         - Using Docker
             ```bash
-            docker compose down && docker rmi so-terraform-notebook
+            docker compose down && docker rmi so-cloudformation-notebook
+            ```
+6. Follow the instructions in the notebook `step-3-scripts/topic-modelling.ipynb`
+7. Stop the JupyterLab server and clean up
+    1. Stop the server (and container)
+        ```bash
+        CTRL+C
+        ```
+    2. Clean up
+        - Using conda
+            ```bash
+            conda deactivate && conda env remove -n so-cloudformation-notebook
+            ```
+        - Using Docker
+            ```bash
+            docker compose down && docker rmi so-cloudformation-notebook
             ```
 
 ## Dataset
 
-The final dataset is available in the directory `step-2-output/questions/`. It contains the 491 questions about Terraform (i.e., one more tags matching `*cloudformation*`) with cost-related keywords. Each question is stored in a separate JSON file named after the question ID and contains:
+The final dataset is available in the directory `step-2-output/questions/`. It contains the 218 questions about Cloudformation (i.e., one more tags matching `*cloudformation*`) with cost-related keywords. Each question is stored in a separate JSON file named after the question ID and contains:
 - the question itself
 - the comments on the question
 - the post history of the question
