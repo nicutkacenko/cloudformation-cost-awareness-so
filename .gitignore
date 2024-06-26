@@ -5,3 +5,4 @@ step-2-scripts/geckodriver.log
 __pycache__/
 .DS_Store
 myenv/
+env/
